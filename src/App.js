@@ -1,25 +1,28 @@
-import logo from './logo.svg';
+import react, { Fragment } from 'react'
 import './App.css';
-
+import Appbar from './components/navbar/Appbar'
+import Sidebar from './components/sidebar/Sidebar'
+import UserList from './components/UserList/UserList'
+import Feature from './components/FeatureInfo/Feature'
+import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Appbar />
+        <div className="sidebarcontainer">
+          <Sidebar></Sidebar>
+          <div className="other">
+              <Switch>
+                <Route exact path="/user"><UserList></UserList></Route>
+                <Route exact path="/"><Feature></Feature></Route>
+              </Switch>
+         </div>
+        </div>
+      </div>
+      </Router>
   );
+
 }
 
 export default App;
